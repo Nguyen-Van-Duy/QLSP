@@ -1,6 +1,8 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './Main.css';
 import {Link} from 'react-router-dom';
+import { getPostFromAPI } from '../../API'
+
 
 const listProduct = [
     {
@@ -30,6 +32,15 @@ const listProduct = [
 ]
 
 const Main = () => {
+
+    useEffect(() => {
+        async function getPostFromAPIF() {
+            const res = await getPostFromAPI("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InBob25nMTIzIiwibmFtZSI6IlBob25nIFBoYW0iLCJlbWFpbCI6InBob25nQGdtYWlsLmNvbSIsImlhdCI6MTYzNDQ2MjE3MCwiZXhwIjoxNjM0NDgzNzcwfQ.nj6fyFHUtoKEoqwW2WV5lqz9bfRbuwCQ14w6JXNVSkw")
+            console.log(res.data)
+        }
+        getPostFromAPIF();
+    }, []);
+
     return (
             <div className="card">
                 <div className="row">

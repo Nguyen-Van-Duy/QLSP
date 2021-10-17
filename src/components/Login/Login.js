@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import './Login.css';
+import { authSignUpAPI, authLoginAPI } from '../API'
 
 const isEmpty = value => value.trim() === '';
 
@@ -20,7 +21,9 @@ const Login = () => {
     })
     const [isLogin, setIsLogin] = useState(true);
 
-    const submitHandle = (e) => {
+    const [result, setResult] = useState([]);
+
+    const submitHandle = async (e) => {
         e.preventDefault();
         const enteredEmail = emailInput.current.value;
         const enteredPassword = passwordInput.current.value;
@@ -28,11 +31,23 @@ const Login = () => {
         const emailIsValid = !isEmpty(enteredEmail);
         const passwordIsValid = !isEmpty(enteredPassword);
 
+
+
         setIsCheckout({
             email: emailIsValid,
             password: passwordIsValid
         })
-        if (enteredEmail === admin.email & enteredPassword === admin.password) {
+
+        const authLogin = await authLoginAPI({
+            "email": enteredEmail,
+            "password": enteredPassword
+        });
+
+        
+
+        console.log("run")
+
+        if (authLogin.data.token != "") {
             history.push('/admin');
         } else {
             setIsLogin(false)
