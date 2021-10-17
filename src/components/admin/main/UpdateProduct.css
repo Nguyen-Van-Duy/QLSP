@@ -1,4 +1,50 @@
+
+.update-product {
+    border: 1px solid black;
+    width: 100%;
+}
+
+.update-product ul {
+    position: relative;
+    margin: 0 auto;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* margin-bottom: 20px; */
+}
+
 .update-product ul li {
+    display: flex;
     list-style: none;
     text-align: left;
+    width: 100%;
+    margin: 5px;
+}
+
+.update-product ul li span {
+    /* width: 90px !important; */
+    list-style: none;
+    text-align: left;
+    font-weight: 600;
+    margin-right: 10px;
+    width: 120px;
+}
+
+.update-product ul li textarea {
+    flex: 1;
+    min-height: 150px;
+}
+
+.update-product ul li input {
+    flex: 1;
+    padding: 2px;
+}
+
+.update-product ul button {
+    width: 70px;
+    padding: 5px;
+    margin: 5px auto;
+    margin-bottom: 20px;
+    
 }

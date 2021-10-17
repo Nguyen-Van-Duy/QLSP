@@ -2,6 +2,8 @@ import React, { useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import './Login.css';
 import { authSignUpAPI, authLoginAPI } from '../API'
+import { useDispatch } from 'react-redux';
+import { tokenActions } from '../../store';
 
 const isEmpty = value => value.trim() === '';
 
@@ -12,6 +14,7 @@ const admin = {
 
 const Login = () => {
     const history = useHistory();
+    const dispatch = useDispatch();
     
     const emailInput = useRef();
     const passwordInput = useRef();
@@ -21,7 +24,7 @@ const Login = () => {
     })
     const [isLogin, setIsLogin] = useState(true);
 
-    const [result, setResult] = useState([]);
+    // const [result, setResult] = useState([]);
 
     const submitHandle = async (e) => {
         e.preventDefault();
@@ -31,23 +34,23 @@ const Login = () => {
         const emailIsValid = !isEmpty(enteredEmail);
         const passwordIsValid = !isEmpty(enteredPassword);
 
-
-
+        
         setIsCheckout({
             email: emailIsValid,
             password: passwordIsValid
         })
-
+        
+        if(!emailIsValid & !passwordIsValid) {
+            return;
+        }
         const authLogin = await authLoginAPI({
             "email": enteredEmail,
             "password": enteredPassword
         });
 
         
-
-        console.log("run")
-
-        if (authLogin.data.token != "") {
+        if (authLogin.data.token !== "") {
+            dispatch(tokenActions.tokenHandle(authLogin.data.token));
             history.push('/admin');
         } else {
             setIsLogin(false)

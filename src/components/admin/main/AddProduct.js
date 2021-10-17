@@ -1,39 +1,45 @@
-import React from 'react';
+import React, {useRef} from 'react';
 
 const AddProduct = () => {
+    const title = useRef();
+    const author = useRef();
+    const type = useRef();
+    const episodes = useRef();
+    const price = useRef();
+    const description = useRef();
+    const producer = useRef();
     return (
         <div className="card">
-            
             <form className='update-product'>
-                <h2>Thêm sản phẩm mới</h2>
                 <ul>
+                    <h2>Thêm sản phẩm mới</h2>
                     <li>
                         <span>Tên sản phẩm:</span>
-                        <input type="text" />
+                        <input ref={title} type="text" />
                     </li>
                     <li>
                         <span>Tác giả:</span>
-                        <input type="text" />
+                        <input ref={author} type="text" />
                     </li>
                     <li>
                         <span>Thể loại:</span>
-                        <input type="text" />
+                        <input ref={type} type="text" />
                     </li>
                     <li>
                         <span>Nhà xuất bản:</span>
-                        <input type="text" />
+                        <input ref={producer} type="text"  />
                     </li>
                     <li>
                         <span>Tập:</span>
-                        <input type="text" />
+                        <input ref={episodes} type="text" />
                     </li>
                     <li>
                         <span>Giá:</span>
-                        <input type="text" />
+                        <input ref={price} type="text" />
                     </li>
                     <li>
                         <span>Mô tả:</span>
-                        <input type="text" />
+                        <textarea ref={description} type="text" />
                     </li>
                     <button type="submit">Sửa</button>
                 </ul>
