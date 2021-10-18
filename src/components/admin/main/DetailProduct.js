@@ -1,15 +1,16 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useHistory } from 'react-router-dom';
 import './DetailProduct.css';
+import { deleteBooksToAPI } from '../../API';
 
 const DetailProduct = () => {
     const listProduct = useSelector(state=>state.token.listProduct);
     console.log(listProduct);
     const idParams = useParams();
     const dataProduct = listProduct.filter(product=>(product.id.toString() === idParams.productId.toString()))[0];
-    console.log(dataProduct);
-    console.log(idParams)
+    const token = useSelector(state=>state.token.token);
+    const history = useHistory();
     return (
         <div className="card">
             <h2>{idParams.productId}</h2>
@@ -31,9 +32,10 @@ const DetailProduct = () => {
                                 <Link to={`/admin/update/${dataProduct.id}`}>
                                 <button type="button">Sửa</button>
                                 </Link>
-                                <Link to="">
-                                <button type="button">Xóa</button>
-                                </Link>
+                                <button type="" onClick={()=> {if(window.confirm("Ban chac chua")){
+                                    deleteBooksToAPI(token, dataProduct.id);
+                                    history.replace('/admin/product');
+                                    }}}>Xóa</button>
                             </li>
                         </ul>
                     </div>

@@ -21,6 +21,11 @@ const Main = () => {
         getPostFromAPIF();
     }, [dispatch, token]);
 
+    useEffect(() => {
+        const isToken = localStorage.getItem('token');
+        dispatch(tokenActions.tokenHandle(isToken));
+    }, [dispatch]);
+
     return (
             <div className="card">
                 <div className="row">

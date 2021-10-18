@@ -4,13 +4,14 @@ import Login from './components/Login/Login';
 import {Switch, Route, Redirect} from 'react-router-dom';
 
 function App() {
+  
   return (
     <div className="App">
       <Switch>
         <Route path="/" exact>
-          <Redirect to='/login'>Login</Redirect>
+          <Redirect to='/login'></Redirect>
         </Route>
-        <Route path="/login" exact>
+        <Route path="/login">
           <Login />
         </Route>
         <Route path="/admin">

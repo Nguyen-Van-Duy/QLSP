@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import './Login.css';
 import { authSignUpAPI, authLoginAPI } from '../API'
@@ -23,6 +23,7 @@ const Login = () => {
         password: true,
     })
     const [isLogin, setIsLogin] = useState(true);
+
 
     // const [result, setResult] = useState([]);
 
@@ -51,6 +52,7 @@ const Login = () => {
         
         if (authLogin.data.token !== "") {
             dispatch(tokenActions.tokenHandle(authLogin.data.token));
+            localStorage.setItem('token', authLogin.data.token);
             history.push('/admin');
         } else {
             setIsLogin(false)

@@ -25,6 +25,7 @@ const Admin = () => {
                     <Route path="/admin/update/:updateId">
                         <UpdateProduct />
                     </Route>
+                    
                     <Route path="/admin/add-product">
                         <AddProduct />
                     </Route>
