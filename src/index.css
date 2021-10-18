@@ -13,7 +13,14 @@ code {
 }
 
 html {
-  /* background: #1f1f1f; */
+  background-image: url("https://images6.alphacoders.com/407/thumb-1920-407515.jpg");
+  background-color: #cccccc;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 * {

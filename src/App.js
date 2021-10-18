@@ -16,9 +16,9 @@ function App() {
         <Route path="/login">
           <Login />
         </Route>
-        {token !== '' && <Route path="/admin">
-          <Admin />
-        </Route>}
+        <Route path="/admin">
+          {token !== null ? <Admin /> : <Redirect to='/login'></Redirect>}
+        </Route>
       </Switch>
     </div>
   );

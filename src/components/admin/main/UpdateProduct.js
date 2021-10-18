@@ -40,44 +40,46 @@ const UpdateProduct = () => {
     }
     return (
         <div className="card">
-            <form className='update-product' onSubmit={submitHandle}>
-                <ul>
-                    <h2>Thay đổi thông tin sản phẩm {idParams.updateId}</h2>
-                    <li>
-                        <span>Tên sản phẩm:</span>
-                        <input ref={title} type="text" defaultValue={dataProduct.title} />
-                    </li>
-                    <li>
-                        <span>Ảnh sản phẩm:</span>
-                        <input ref={img} type="text" defaultValue={dataProduct.img} />
-                    </li>
-                    <li>
-                        <span>Tác giả:</span>
-                        <input ref={author} type="text" defaultValue={dataProduct.author} />
-                    </li>
-                    <li>
-                        <span>Thể loại:</span>
-                        <input ref={type} type="text" defaultValue={dataProduct.type} />
-                    </li>
-                    <li>
-                        <span>Nhà xuất bản:</span>
-                        <input ref={producer} type="text"  defaultValue={dataProduct.producer} />
-                    </li>
-                    <li>
-                        <span>Tập:</span>
-                        <input ref={episodes} type="text" defaultValue={dataProduct.episodes} />
-                    </li>
-                    <li>
-                        <span>Giá:</span>
-                        <input ref={price} type="text" defaultValue={dataProduct.price} />
-                    </li>
-                    <li>
-                        <span>Mô tả:</span>
-                        <textarea ref={description} type="text" defaultValue={dataProduct.description} />
-                    </li>
-                    <button type="submit">Sửa</button>
-                </ul>
-            </form>
+            <div className="main-update">
+                <form className='update-product' onSubmit={submitHandle}>
+                    <ul>
+                        <h2>Thay đổi thông tin sản phẩm {idParams.updateId}</h2>
+                        <li>
+                            <span>Tên sản phẩm:</span>
+                            <input ref={title} type="text" defaultValue={dataProduct.title} />
+                        </li>
+                        <li>
+                            <span>Ảnh sản phẩm:</span>
+                            <input ref={img} type="text" defaultValue={dataProduct.img} />
+                        </li>
+                        <li>
+                            <span>Tác giả:</span>
+                            <input ref={author} type="text" defaultValue={dataProduct.author} />
+                        </li>
+                        <li>
+                            <span>Thể loại:</span>
+                            <input ref={type} type="text" defaultValue={dataProduct.type} />
+                        </li>
+                        <li>
+                            <span>Nhà xuất bản:</span>
+                            <input ref={producer} type="text"  defaultValue={dataProduct.producer} />
+                        </li>
+                        <li>
+                            <span>Tập:</span>
+                            <input ref={episodes} type="text" defaultValue={dataProduct.episodes} />
+                        </li>
+                        <li>
+                            <span>Giá:</span>
+                            <input ref={price} type="text" defaultValue={dataProduct.price} />
+                        </li>
+                        <li>
+                            <span>Mô tả:</span>
+                            <textarea ref={description} type="text" defaultValue={dataProduct.description} />
+                        </li>
+                        <button className='button-fix' type="submit">Sửa</button>
+                    </ul>
+                </form>
+            </div>
         </div>
     );
 };

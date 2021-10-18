@@ -26,56 +26,56 @@ const AddProduct = () => {
             "description": description.current.value
         }
         let status = await postBooksToAPI(token, data);
-        console.log(status);
-         if (status.statusText == "OK"){
-             console.log("success");
-             alert('Them thanh cong!');
+         if (status.statusText === "OK"){
+             alert('Thêm sản phẩm thành công!');
          } else {
-             alert('That bai');
+             alert('Thêm sản phẩm thất bại');
          }
     }
 
-
     return (
         <div className="card" onSubmit={submitHandle}>
-            <form className='update-product'>
-                <ul>
-                    <h2>Thêm sản phẩm mới</h2>
-                    <li>
-                        <span>Tên sản phẩm:</span>
-                        <input ref={title} type="text" />
-                    </li>
-                    <li>
-                        <span>Ảnh sản phẩm:</span>
-                        <input ref={img} type="text" />
-                    </li>
-                    <li>
-                        <span>Tác giả:</span>
-                        <input ref={author} type="text" />
-                    </li>
-                    <li>
-                        <span>Thể loại:</span>
-                        <input ref={type} type="text" />
-                    </li>
-                    <li>
-                        <span>Nhà xuất bản:</span>
-                        <input ref={producer} type="text"  />
-                    </li>
-                    <li>
-                        <span>Tập:</span>
-                        <input ref={episodes} type="text" />
-                    </li>
-                    <li>
-                        <span>Giá:</span>
-                        <input ref={price} type="text" />
-                    </li>
-                    <li>
-                        <span>Mô tả:</span>
-                        <textarea ref={description} type="text" />
-                    </li>
-                    <button type="submit">Thêm sản phẩm</button>
-                </ul>
-            </form>
+            <div className="main-update">
+
+                <form className='update-product'>
+                    <ul>
+                        <h2>Thêm sản phẩm mới</h2>
+                        <li>
+                            <span>Tên sản phẩm:</span>
+                            <input ref={title} type="text" placeholder='Nhập tên sản phẩm ' />
+                        </li>
+                        <li>
+                            <span>Ảnh sản phẩm:</span>
+                            <input ref={img} type="text" placeholder='Nhập url ảnh sản phẩm ' />
+                        </li>
+                        <li>
+                            <span>Tác giả:</span>
+                            <input ref={author} type="text" placeholder='Nhập tác giả ' />
+                        </li>
+                        <li>
+                            <span>Thể loại:</span>
+                            <input ref={type} type="text" placeholder='Nhập thể loại ' />
+                        </li>
+                        <li>
+                            <span>Nhà xuất bản:</span>
+                            <input ref={producer} type="text" placeholder='Nhập nhà xuất bản '  />
+                        </li>
+                        <li>
+                            <span>Tập:</span>
+                            <input ref={episodes} type="text" placeholder='Nhập số tập ' />
+                        </li>
+                        <li>
+                            <span>Giá:</span>
+                            <input ref={price} type="text" placeholder='Nhập giá sản phẩm ' />
+                        </li>
+                        <li>
+                            <span>Mô tả:</span>
+                            <textarea ref={description} type="text" placeholder='Nhập mô tả sản phẩm ' />
+                        </li>
+                        <button className='btn-add' type="submit">Thêm sản phẩm</button>
+                    </ul>
+                </form>
+            </div>
         </div>
     );
 };

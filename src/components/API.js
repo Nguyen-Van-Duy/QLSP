@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-const URL_API_PUT = "http://localhost:3000/books";
-
 const URL_API_LOGIN = "http://localhost:3000/users/login";
 
 const URL_API_SIGNUP = "http://localhost:3000/signup";
