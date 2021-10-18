@@ -1,9 +1,14 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { tokenActions } from '../../store';
 import './Header.css';
+
 
 const Header = () => {
     const history = useHistory();
+    const dispatch = useDispatch();
+    
 
     return (
         <div className="header">
@@ -12,7 +17,11 @@ const Header = () => {
                 <div>
                     <button onClick={()=>history.push('/admin/product')}>Sản phẩm</button>
                     <button onClick={()=>history.push('/admin/add-product')}>Thêm sản phẩm</button>
-                    <button onClick={()=>history.replace('/')}>Đăng xuất</button>
+                    <button onClick={()=>{
+                        history.replace('/')
+                        localStorage.removeItem('token');
+                        dispatch(tokenActions.tokenHandle(''))
+                        }}>Đăng xuất</button>
                 </div>
             </div>
         </div>

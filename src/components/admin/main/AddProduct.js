@@ -13,7 +13,7 @@ const AddProduct = () => {
     const producer = useRef();
     const img = useRef();
 
-    const submitHandle = (e) => {
+    const submitHandle = async (e) => {
         e.preventDefault();
         let data = {
             "title": title.current.value,
@@ -25,7 +25,8 @@ const AddProduct = () => {
             "episodes": episodes.current.value,
             "description": description.current.value
         }
-        let status = postBooksToAPI(token, data);
+        let status = await postBooksToAPI(token, data);
+        console.log(status);
          if (status.statusText == "OK"){
              console.log("success");
              alert('Them thanh cong!');

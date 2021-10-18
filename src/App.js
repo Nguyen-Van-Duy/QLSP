@@ -2,8 +2,10 @@ import './App.css';
 import Admin from './components/admin/Admin';
 import Login from './components/Login/Login';
 import {Switch, Route, Redirect} from 'react-router-dom';
+import {useSelector} from 'react-redux';
 
 function App() {
+  const token = useSelector(state=>state.token.token);
   
   return (
     <div className="App">
@@ -14,9 +16,9 @@ function App() {
         <Route path="/login">
           <Login />
         </Route>
-        <Route path="/admin">
+        {token !== '' && <Route path="/admin">
           <Admin />
-        </Route>
+        </Route>}
       </Switch>
     </div>
   );

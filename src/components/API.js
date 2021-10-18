@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const URL_API = "https://phongallpostapi.herokuapp.com/api/post";
+const URL_API_PUT = "http://localhost:3000/books";
 
 const URL_API_LOGIN = "http://localhost:3000/users/login";
 
@@ -9,13 +9,6 @@ const URL_API_SIGNUP = "http://localhost:3000/signup";
 const URL_API_GET_BOOK = "http://localhost:3000/books";
 
 const URL_API_POST_BOOK = "http://localhost:3000/books";
-
-const URL_API_DELETE_BOOK = "http://localhost:3000/books";
-
-const URL_API_CATEGORY_POST = "https://phongallpostapi.herokuapp.com/api/category/";
-
-const URL_API_COUNT = "https://phongallpostapi.herokuapp.com/api/countPost";
-
 
 
 export async function getPostFromAPI(authorization) {
@@ -53,6 +46,21 @@ export async function deleteBooksToAPI(authorization, data) {
             'accept': 'application/json',
             'Authorization': `Bearer ${authorization}`
         },
+    });
+    return respones;
+    
+}
+
+export async function putBooksToAPI(authorization, id, data) {
+    const respones = await axios ({
+        method: 'PUT',
+        url: `http://localhost:3000/books/${id}`,
+        headers: {
+            'accept': 'application/json',
+            'Authorization': `Bearer ${authorization}`,
+            'content-type': 'application/json',
+        },
+        data: JSON.stringify(data)
     });
     return respones;
     

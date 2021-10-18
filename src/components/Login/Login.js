@@ -1,7 +1,7 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState} from 'react';
 import { useHistory } from 'react-router-dom';
 import './Login.css';
-import { authSignUpAPI, authLoginAPI } from '../API'
+import { authLoginAPI } from '../API';
 import { useDispatch } from 'react-redux';
 import { tokenActions } from '../../store';
 
@@ -44,19 +44,24 @@ const Login = () => {
         if(!emailIsValid & !passwordIsValid) {
             return;
         }
-        const authLogin = await authLoginAPI({
-            "email": enteredEmail,
-            "password": enteredPassword
-        });
+        try {
+            const authLogin = await authLoginAPI({
+                "email": enteredEmail,
+                "password": enteredPassword
+            });
+            if (authLogin.data.token !== undefined) {
+                dispatch(tokenActions.tokenHandle(authLogin.data.token));
+                localStorage.setItem('token', authLogin.data.token);
+                history.push('/admin');
+            } else {
+                setIsLogin(false)
+               
+            }
+        } catch(e) {
+            if(e !== '')  alert('Tài khoản hoặc mật khẩu không chính xác!')
+        }
 
         
-        if (authLogin.data.token !== "") {
-            dispatch(tokenActions.tokenHandle(authLogin.data.token));
-            localStorage.setItem('token', authLogin.data.token);
-            history.push('/admin');
-        } else {
-            setIsLogin(false)
-        }
     }
     return (
         <div className='login'>
